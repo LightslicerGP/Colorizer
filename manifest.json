@@ -2,13 +2,13 @@
   "name": "Colorizer",
   "short_name": "Colorizer",
   "description": "An app to display colors.",
-  "start_url": "/",
+  "start_url": ".",
   "display_override": ["window-controls-overlay"],
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#808080",
   "orientation": "any",
-  "scope": "/",
+  "scope": ".",
   "icons": [
     {
       "src": "Icons/windows11/SmallTile.scale-100.png",
