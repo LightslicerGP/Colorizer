@@ -8,6 +8,9 @@
   "theme_color": "#808080",
   "orientation": "any",
   "scope": "./",
+  "dir": "ltr",
+  "orientation": "portrait-primary",
+  "lang": "en",
   "icons": [
     {
       "src": "Icons/windows11/SmallTile.scale-100.png",
