@@ -3,7 +3,6 @@
   "short_name": "Colorizer",
   "description": "An app to display colors.",
   "start_url": "./",
-  "display_override": ["window-controls-overlay"],
   "display": "fullscreen",
   "background_color": "#000000",
   "theme_color": "#808080",
