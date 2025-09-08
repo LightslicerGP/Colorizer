@@ -4,7 +4,7 @@
   "description": "An app to display colors.",
   "start_url": "./",
   "display_override": ["window-controls-overlay"],
-  "display": "standalone",
+  "display": "fullscreen",
   "background_color": "#000000",
   "theme_color": "#808080",
   "orientation": "any",
