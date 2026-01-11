@@ -1,15 +1,8 @@
 {
-  "name": "Colorizer",
-  "short_name": "Colorizer",
+  "background_color": "#808080",
   "description": "An app to display colors.",
-  "start_url": "./",
-  "display": "fullscreen",
-  "background_color": "#000000",
-  "theme_color": "#808080",
-  "orientation": "any",
-  "scope": "./",
   "dir": "ltr",
-  "lang": "en",
+  "display": "fullscreen",
   "icons": [
     {
       "src": "Icons/windows11/SmallTile.scale-100.png",
@@ -459,5 +452,12 @@
       "src": "Icons/ios/1024.png",
       "sizes": "1024x1024"
     }
-  ]
+  ],
+  "lang": "en",
+  "name": "Colorizer",
+  "orientation": "any",
+  "scope": "./",
+  "short_name": "Colorizer",
+  "start_url": "./",
+  "theme_color": "#808080"
 }
