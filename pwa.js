@@ -6,16 +6,16 @@ const isStandalone = window.matchMedia("(display-mode: standalone)").matches
     || window.navigator.standalone === true;
 
 if (!isStandalone) {
-    installBtn.style.display = "none"; // start hidden
+    installBtn.classList.add('removed'); // start hidden
 
     window.addEventListener("beforeinstallprompt", (e) => {
         e.preventDefault();
         deferredPrompt = e;
-        installBtn.style.display = "block";
+        installBtn.classList.remove('removed');
     });
 
     installBtn.addEventListener("click", async () => {
-        installBtn.style.display = "none";
+        installBtn.classList.add('removed');
 
         if (deferredPrompt) {
             deferredPrompt.prompt();
@@ -25,7 +25,7 @@ if (!isStandalone) {
         }
     });
 } else {
-    installBtn.style.display = "none";
+    installBtn.classList.add('removed');
 }
 
 // Register service worker

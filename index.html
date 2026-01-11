@@ -7,7 +7,7 @@
 
     <link rel="shortcut icon" type="image/png" href="Icons/Colorizer.png" />
     <link rel="manifest" href="manifest.json" />
-    <meta name="theme-color" content="#808080" />
+    <meta name="theme-color" content="transparent" />
     <meta name="description" content="An app to display colors." />
     <link rel="stylesheet" href="index.css" />
 
@@ -15,35 +15,67 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   </head>
   <body>
-    <div class="hidden" id="menu">
-      <div id="install-btn">Install PWA</div>
-      <h1>Settings</h1>
-      <label id="hex-color-input-label" for="hex-color-input">Hex Color:</label>
-      <input
-        type="text"
-        id="hex-color-input"
-        name="hex-color-input"
-        value="#000000"
-        maxlength="7"
-        pattern="^#?([A-Fa-f0-9]{6})$"
-        autocomplete="off"
-        spellcheck="false"
-        placeholder="#000000 or 000000"
-      />
-      <div class="button-row">
-        <button id="set-color-btn">Set Color</button>
-        <button id="delete-recent-btn">Delete Recent</button>
+    <div id="install-btn" class="glassy button">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+        <path d="M7 11l5 5l5 -5" />
+        <path d="M12 4l0 12" />
+      </svg>
+    </div>
+
+    <div id="controls">
+      <div id="left" class="glassy button">
+        <p id="colorLabel"></p>
+
+        <div id="popup">
+          <div id="colorPicker">
+            <div class="label">hex</div>
+            <input class="glassy value" type="text" id="hexValue" value="" autocomplete="off" spellcheck="false" />
+            <div class="label">hsl</div>
+            <input class="glassy value" type="text" id="hslValue" value="" autocomplete="off" spellcheck="false" />
+            <div class="label">hsv</div>
+            <input class="glassy value" type="text" id="hsvValue" value="" autocomplete="off" spellcheck="false" />
+            <div class="label">rgb</div>
+            <input class="glassy value" type="text" id="rgbValue" value="" autocomplete="off" spellcheck="false" />
+          </div>
+          <div id="saveColor" class="glassy">Save Color</div>
+          <div id="savedColors">
+            <p>Saved Colors</p>
+            <div id="colorSelector"></div>
+          </div>
+        </div>
       </div>
-      <span id="hex-color-error">Please enter a valid hex color (e.g. #1a2b3c or 1a2b3c)</span>
-      <div id="previousColors">
-        <p>Previous Colors</p>
-        <div id="color-history-list"></div>
+      <div id="right" class="glassy button">
+        <svg
+          id="saveColorBtn"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" />
+          <path d="M10 14a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+          <path d="M14 4l0 4l-6 0l0 -4" />
+        </svg>
       </div>
     </div>
 
     <script src="index.js"></script>
     <script src="pwa.js"></script>
-    <script type="module">
+    <!-- <script type="module">
       import { squircleObserver } from "https://esm.sh/corner-smoothing";
 
       window.applySquircles = function applySquircles() {
@@ -64,6 +96,6 @@
       };
 
       window.addEventListener("load", window.applySquircles);
-    </script>
+    </script> -->
   </body>
 </html>
