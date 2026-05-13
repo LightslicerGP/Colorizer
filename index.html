@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Colorizer</title>
@@ -9,93 +10,81 @@
     <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="transparent" />
     <meta name="description" content="An app to display colors." />
+    <link rel="stylesheet" href="https://hishamc24.github.io/MNMLUI/CSS/Styles.css" />
     <link rel="stylesheet" href="index.css" />
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  </head>
-  <body>
+</head>
+
+<body>
     <div id="install-btn" class="glassy button">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
-        <path d="M7 11l5 5l5 -5" />
-        <path d="M12 4l0 12" />
-      </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+            <path d="M7 11l5 5l5 -5" />
+            <path d="M12 4l0 12" />
+        </svg>
     </div>
 
     <div id="controls">
-      <div id="left" class="glassy button">
-        <p id="colorLabel"></p>
+        <div id="left" class="glassy button">
+            <p id="colorLabel"></p>
 
-        <div id="popup">
-          <div id="colorPicker">
-            <div class="label">hex</div>
-            <input class="glassy value" type="text" id="hexValue" value="" autocomplete="off" spellcheck="false" />
-            <div class="label">hsl</div>
-            <input class="glassy value" type="text" id="hslValue" value="" autocomplete="off" spellcheck="false" />
-            <div class="label">hsv</div>
-            <input class="glassy value" type="text" id="hsvValue" value="" autocomplete="off" spellcheck="false" />
-            <div class="label">rgb</div>
-            <input class="glassy value" type="text" id="rgbValue" value="" autocomplete="off" spellcheck="false" />
-          </div>
-          <div id="saveColor" class="glassy">Save Color</div>
-          <div id="savedColors">
-            <p>Saved Colors</p>
-            <div id="colorSelector"></div>
-          </div>
+            <div id="popup">
+                <div id="colorPicker">
+                    <div class="label">hex</div>
+                    <input class="value" type="text" id="hexValue" value="" autocomplete="off" spellcheck="false" />
+                    <div class="label">hsl</div>
+                    <input class="value" type="text" id="hslValue" value="" autocomplete="off" spellcheck="false" />
+                    <div class="label">hsv</div>
+                    <input class="value" type="text" id="hsvValue" value="" autocomplete="off" spellcheck="false" />
+                    <div class="label">rgb</div>
+                    <input class="value" type="text" id="rgbValue" value="" autocomplete="off" spellcheck="false" />
+                </div>
+                <div id="saveColor">Save Color</div>
+                <div id="savedColors">
+                    <p>Saved Colors</p>
+                    <div id="colorSelector"></div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div id="right" class="glassy button">
-        <svg
-          id="saveColorBtn"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" />
-          <path d="M10 14a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-          <path d="M14 4l0 4l-6 0l0 -4" />
-        </svg>
-      </div>
+        <div id="right" class="glassy button">
+            <svg id="saveColorBtn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" />
+                <path d="M10 14a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                <path d="M14 4l0 4l-6 0l0 -4" />
+            </svg>
+        </div>
     </div>
 
     <script src="index.js"></script>
     <script src="pwa.js"></script>
-    <script type="module">
-      import { squircleObserver } from "https://esm.sh/corner-smoothing";
+    <!-- <script type="module">
+        import { squircleObserver } from "https://esm.sh/corner-smoothing";
 
-      window.applySquircles = function applySquircles() {
-        const allElements = document.querySelectorAll("*");
-        allElements.forEach((el) => {
-          const style = getComputedStyle(el);
-          const radius = parseFloat(style.borderRadius);
-          if (radius > 0) {
-            squircleObserver(el, {
-              cornerRadius: radius,
-              cornerSmoothing: 0.6,
-              style: {
-                fill: style.backgroundColor,
-              },
+        window.applySquircles = function applySquircles() {
+            const allElements = document.querySelectorAll("*");
+            allElements.forEach((el) => {
+                const style = getComputedStyle(el);
+                const radius = parseFloat(style.borderRadius);
+                if (radius > 0) {
+                    squircleObserver(el, {
+                        cornerRadius: radius,
+                        cornerSmoothing: 0.6,
+                        style: {
+                            fill: style.backgroundColor,
+                        },
+                    });
+                }
             });
-          }
-        });
-      };
+        };
 
-      window.addEventListener("load", window.applySquircles);
-    </script>
-  </body>
+        window.addEventListener("load", window.applySquircles);
+    </script> -->
+</body>
+
 </html>

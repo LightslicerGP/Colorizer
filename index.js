@@ -271,9 +271,9 @@ function refreshSavedColorsUI() {
             applyBackgroundColor(hex);
             try {
                 localStorage.setItem(LAST_USED_COLOR_KEY, hex);
-            } catch {}
+            } catch { }
         });
-        (function(colorP, color) {
+        (function (colorP, color) {
             let longPressTimer = null;
             let longPressTriggered = false;
             function removeThisColor(e) {
@@ -284,53 +284,53 @@ function refreshSavedColorsUI() {
                 refreshSavedColorsUI();
                 updateColorElBackgrounds();
             }
-            colorP.addEventListener('touchstart', function(e) {
+            colorP.addEventListener('touchstart', function (e) {
                 longPressTriggered = false;
                 if (e.touches && e.touches.length > 1) return;
-                longPressTimer = setTimeout(function() {
+                longPressTimer = setTimeout(function () {
                     longPressTriggered = true;
                     removeThisColor(e);
                 }, 600);
-            }, {passive: false});
-            colorP.addEventListener('touchend', function(e) {
+            }, { passive: false });
+            colorP.addEventListener('touchend', function (e) {
                 if (longPressTimer) {
                     clearTimeout(longPressTimer);
                     longPressTimer = null;
                 }
             });
-            colorP.addEventListener('touchcancel', function(e) {
+            colorP.addEventListener('touchcancel', function (e) {
                 if (longPressTimer) {
                     clearTimeout(longPressTimer);
                     longPressTimer = null;
                 }
             });
-            colorP.addEventListener('mousedown', function(e) {
+            colorP.addEventListener('mousedown', function (e) {
                 if (e.button !== 0) return;
                 longPressTriggered = false;
-                longPressTimer = setTimeout(function() {
+                longPressTimer = setTimeout(function () {
                     longPressTriggered = true;
                     removeThisColor(e);
                 }, 600);
             });
-            colorP.addEventListener('mouseup', function(e) {
+            colorP.addEventListener('mouseup', function (e) {
                 if (longPressTimer) {
                     clearTimeout(longPressTimer);
                     longPressTimer = null;
                 }
             });
-            colorP.addEventListener('mouseleave', function(e) {
+            colorP.addEventListener('mouseleave', function (e) {
                 if (longPressTimer) {
                     clearTimeout(longPressTimer);
                     longPressTimer = null;
                 }
             });
-            colorP.addEventListener('mousemove', function(e) {
+            colorP.addEventListener('mousemove', function (e) {
                 if (longPressTimer) {
                     clearTimeout(longPressTimer);
                     longPressTimer = null;
                 }
             });
-            colorP.addEventListener('touchmove', function(e) {
+            colorP.addEventListener('touchmove', function (e) {
                 if (longPressTimer) {
                     clearTimeout(longPressTimer);
                     longPressTimer = null;
@@ -398,12 +398,16 @@ left.addEventListener("click", function (e) {
     }
 });
 document.addEventListener("click", function (e) {
-    if (
-        controls.classList.contains("open") &&
-        !left.contains(e.target)
-    ) {
+    const isClickInsideControls = controls.contains(e.target);
+    const isControlsOpen = controls.classList.contains("open");
+
+    if (isControlsOpen && !left.contains(e.target)) {
         controls.classList.remove("open");
         left.classList.add("button");
+    } else if (!isControlsOpen && !isClickInsideControls) {
+        controls.classList.toggle("transparent");
+        const installBtn = document.getElementById("install-btn");
+        if (installBtn) installBtn.classList.toggle("transparent");
     }
 });
 
